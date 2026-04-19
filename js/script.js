@@ -1,66 +1,83 @@
 const commandsData = {
-  category1: {
-    icon: "📜",
-    title: "Category 1",
+  funRandom: {
+    icon: "🎲",
+    title: "Fun & Random",
+    subtitle: "Zábavné príkazy",
     commands: [
-      {
-        name: "/command1",
-        description: "Description of command1",
-        permission: "All",
-      },
-      {
-        name: "/command2",
-        description: "Description of command2",
-        permission: "All",
-      },
+      { name: "!roll", description: "Hod kockou", permission: "All" },
+      { name: "!flip", description: "Hod mincou", permission: "All" },
+      { name: "owo / uwu", description: "odpovede späť", permission: "All" },
+      { name: "!fox / !cat / !dog", description: "Obrázky zvieratiek", permission: "All" },
+      { name: "!bbyfur", description: "Babyfur obrázky", permission: "All" },
+      { name: "!say (text)", description: "Zopakuje správu", permission: "All" },
+      { name: "!pp", description: "PP meter", permission: "All" },
+      { name: "!gay", description: "Gay meter", permission: "All" },
+      { name: "!meme", description: "Random meme", permission: "All" },
+      { name: "!decide", description: "Vyberie jedno z tvojích dvoch možností", permission: "All" },
+      { name: "!komix", description: "ABDL komiksy!", permission: "All" },
     ],
   },
-  category2: {
-    icon: "⚙️",
-    title: "Category 2",
+  interakcie: {
+    icon: "💖",
+    title: "Interakcie",
+    subtitle: "Akcie medzi používateľmi",
     commands: [
-      {
-        name: "/command3",
-        description: "Description of command3",
-        permission: "Admin",
-      },
-      {
-        name: "/command4",
-        description: "Description of command4",
-        permission: "Admin",
-      },
+      { name: "!hug", description: "Objatie", permission: "All" },
+      { name: "!cuddle", description: "Cuddle", permission: "All" },
+      { name: "!pat", description: "Pohladkanie", permission: "All" },
+      { name: "!snack", description: "Daruješ snack", permission: "All" },
     ],
   },
-  category3: {
+  minihry: {
     icon: "🎮",
-    title: "Category 3",
+    title: "Minihry",
+    subtitle: "Hry a výzvy",
     commands: [
+      { name: "!counting", description: "Nastaví counting kanál", permission: "All" },
+      { name: "!wordgame", description: "Slovný football", permission: "All" },
+      { name: "!kpn / @user", description: "Kameň, papier, nožnice", permission: "All" },
       {
-        name: "/command5",
-        description: "Description of command5",
-        permission: "All",
-      },
-      {
-        name: "/command6",
-        description: "Description of command6",
+        name: "!pet",
+        description: "Aktivuješ Lumiho ako mazlíka ↳ !check · !feed · !change · !play · !sleep",
         permission: "All",
       },
     ],
   },
-  category4: {
-    icon: "🛠️",
-    title: "Category 4",
+  ekonomika: {
+    icon: "💸",
+    title: "Ekonomika",
+    subtitle: "Money & shop systém",
     commands: [
-      {
-        name: "/command7",
-        description: "Description of command7",
-        permission: "Mod",
-      },
-      {
-        name: "/command8",
-        description: "Description of command8",
-        permission: "Mod",
-      },
+      { name: "!daily", description: "Denná odmena", permission: "All" },
+      { name: "!bump", description: "Odmena za bump servera", permission: "All" },
+      { name: "!coins", description: "Zostatok coinov", permission: "All" },
+      { name: "!shop", description: "Lumiho obchodík", permission: "All" },
+      { name: "!batoh", description: "Tvoj inventár", permission: "All" },
+    ],
+  },
+  narodeniny: {
+    icon: "🎂",
+    title: "Narodeniny",
+    subtitle: "Birthday systém",
+    commands: [
+      { name: "!bday", description: "Uloží tvoje narodeniny", permission: "All" },
+      { name: "!listbday", description: "Zoznam narodenín", permission: "All" },
+      { name: "!setbdaychannel", description: "Nastaví B-day kanál", permission: "All" },
+    ],
+  },
+  nastroje: {
+    icon: "⚙️",
+    title: "Nástroje",
+    subtitle: "Užitočné utility",
+    commands: [
+      { name: "!profile", description: "Vytvorí ti tvoju profile kartičku", permission: "All" },
+      { name: "!info", description: "Analýza používateľa", permission: "All" },
+      { name: "!stats", description: "Diagnostika bota", permission: "All" },
+      { name: "!avatar", description: "Profilový obrázok", permission: "All" },
+      { name: "!potty", description: "Tvoj potty kalendár", permission: "All" },
+      { name: "!voicecreate", description: "Nastaví private VC (Admin)", permission: "Admin" },
+      { name: "!confession", description: "Anonymné správy (Admin tool)", permission: "Admin" },
+      { name: "!clean (count)", description: "Admin tool", permission: "Admin" },
     ],
   },
 };
@@ -68,18 +85,21 @@ const commandsData = {
 function createCategoryButton(key, category) {
   return `
         <div class="bg-white/5 rounded-2xl border border-white/10" id="${key}-container">
-            <button class="w-full px-8 py-6 flex justify-between items-center text-2xl font-semibold" 
-                    onclick="toggleCategory('${key}')">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
-                        ${category.icon}
+            <button class="w-full px-8 py-6 text-left text-2xl font-semibold" onclick="toggleCategory('${key}')">
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                            ${category.icon}
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span>${category.title}</span>
+                            <span class="text-sm text-white/70 mt-1">${category.subtitle}</span>
+                        </div>
                     </div>
-                    <span>${category.title}</span>
+                    <svg class="w-6 h-6 transform transition-transform" id="${key}-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
                 </div>
-                <svg class="w-6 h-6 transform transition-transform" id="${key}-arrow"
-                     xmlns="http:
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
             </button>
             <div class="hidden px-8 pb-6 space-y-4" id="${key}-commands">
                 <!-- Commands will be loaded here when category is opened -->
@@ -96,7 +116,7 @@ function createCommandHTML(cmd) {
                     <h4 class="text-xl font-semibold mb-2">${cmd.name}</h4>
                     <p class="text-white/70">${cmd.description}</p>
                 </div>
-                <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-lg text-sm">
+                <span class="px-3 py-1 bg-[#9C8CFF]/20 text-[#9C8CFF] rounded-lg text-sm">
                     ${cmd.permission}
                 </span>
             </div>
@@ -260,7 +280,7 @@ function initSmoothScroll() {
 
         if (this.getAttribute("href") === "#commands") {
           gsap.to("#commands", {
-            backgroundColor: "rgba(79, 70, 229, 0.1)",
+            backgroundColor: "rgba(156, 140, 255, 0.12)",
             duration: 0.3,
             yoyo: true,
             repeat: 1,
@@ -439,7 +459,7 @@ function initSmoothScroll() {
 
         if (this.getAttribute("href") === "#commands") {
           gsap.to("#commands", {
-            backgroundColor: "rgba(79, 70, 229, 0.1)",
+            backgroundColor: "rgba(156, 140, 255, 0.12)",
             duration: 0.3,
             yoyo: true,
             repeat: 1,
@@ -474,11 +494,48 @@ function initScrollAnimations() {
   });
 }
 
+async function loadDiscordInviteData(inviteCode) {
+  const endpoint = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true&with_expiration=true`;
+  try {
+    const response = await fetch(endpoint, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Discord invite fetch failed");
+    }
+
+    const data = await response.json();
+    const guild = data.guild || {};
+    const iconUrl = guild.icon
+      ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
+      : "images/logo.png";
+
+    const nameEl = document.getElementById("discord-server-name");
+    const descEl = document.getElementById("discord-server-desc");
+    const membersEl = document.getElementById("discord-server-members");
+    const presenceEl = document.getElementById("discord-server-presence");
+    const iconEl = document.getElementById("discord-server-icon");
+    const joinLink = document.getElementById("discord-server-link");
+
+    if (iconEl) iconEl.src = iconUrl;
+    if (nameEl) nameEl.textContent = guild.name || "LUMI Server";
+    if (descEl)
+      descEl.textContent =
+        guild.description || "Oficiálny Discord server LittleSpace komunity";
+    if (membersEl)
+      membersEl.textContent = `${data.approximate_member_count || "?"} členov`;
+    if (presenceEl)
+      presenceEl.textContent = `${data.approximate_presence_count || "?"} online`;
+    if (joinLink) joinLink.href = `https://discord.com/invite/${inviteCode}`;
+  } catch (error) {
+    console.warn("Discord invite fetch failed:", error);
+  }
+}
+
 function initializeWebsite() {
   initHeroAnimations();
   initFeaturesAnimations();
   initScrollAnimations();
   initSmoothScroll();
+  loadDiscordInviteData("tadqJjbfpr");
 
   const ctaButtons = document.querySelectorAll(".gradient-bg");
   ctaButtons.forEach((button) => button.classList.add("pulse-on-hover"));
@@ -486,24 +543,6 @@ function initializeWebsite() {
   const featureCards = document.querySelectorAll(".feature-card");
   featureCards.forEach((card) => card.classList.add("shine-effect"));
 }
-async function updateGitHubStats() {
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/redolenthalo/discord-bot-website-template",
-    );
-    const data = await response.json();
-
-    document.getElementById("stars-count").textContent =
-      `${data.stargazers_count} Stars`;
-    document.getElementById("forks-count").textContent =
-      `${data.forks_count} Forks`;
-  } catch (error) {
-    console.error("Error fetching GitHub stats:", error);
-  }
-}
-
-updateGitHubStats();
-setInterval(updateGitHubStats, 300000);
 
 function scrollToTop() {
   window.scrollTo({
