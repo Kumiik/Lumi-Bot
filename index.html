@@ -1,121 +1,127 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LUMI BOT</title>
-<link rel="icon" href="./images/logo.png">
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LUMI BOT</title>
+    <link rel="icon" type="image/x-icon" href="./images/logo.png">
+    <meta content="#09A8CE" name="theme-color" />
+    <meta name="title" content="LUMI BOT - tvoj littlespace parťák" />
+    <meta name="description" content="꒰ Tvoj Discord kamarát v LittleSpace svete :3" />
 
-<body class="bg-[#2c2f33] text-white">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js"></script>
+  </head>
 
-<!-- NAV -->
-<nav class="fixed w-full top-0 bg-[#2c2f33]/80 backdrop-blur">
-  <div class="max-w-7xl mx-auto flex justify-between items-center h-20 px-6">
-    <div class="flex items-center gap-2">
-      <img src="images/logo.png" class="w-10 h-10 rounded-lg">
-      <span class="text-2xl font-bold text-[#09A8CE]">LUMI</span>
-    </div>
+  <body class="bg-[#2c2f33] text-white">
 
-    <div class="flex gap-6">
-      <a href="#hero">Home</a>
-      <a href="#commands">Commands</a>
-    </div>
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 top-0">
+      <div class="bg-[#2c2f33]/80 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-20">
 
-    <a href="#"><button class="bg-[#09A8CE]/20 px-4 py-2 rounded-lg hover:bg-[#09A8CE]/40">Invite</button></a>
-  </div>
-</nav>
+            <div class="flex items-center gap-2">
+              <img src="images/logo.png" class="w-10 h-10 rounded-lg"/>
+              <span class="text-2xl font-bold text-[#09A8CE]">LUMI</span>
+            </div>
 
-<!-- HERO -->
-<section id="hero" class="min-h-screen flex items-center justify-center text-center px-6">
-  <div>
-    <h1 class="text-5xl font-bold mb-4">h-hi som Lumi!</h1>
-    <p class="text-white/70 text-xl mb-8">
-      ꒰ Tvoj Discord kamarát v LittleSpace svete :3
-    </p>
+            <div class="hidden md:flex gap-8">
+              <a href="#hero">Domov</a>
+              <a href="#commands">Príkazy</a>
+            </div>
 
-    <div class="flex gap-4 justify-center flex-wrap">
-      <a href="#" class="bg-[#09A8CE] px-6 py-3 rounded-xl hover:opacity-90">Invite</a>
-      <a href="#" class="bg-[#09A8CE]/20 px-6 py-3 rounded-xl hover:bg-[#09A8CE]/40">Donate</a>
-      <a href="#commands" class="bg-[#09A8CE]/20 px-6 py-3 rounded-xl hover:bg-[#09A8CE]/40">Commands</a>
-    </div>
+            <a href="https://discord.com/oauth2/authorize?client_id=1445529198360924223&permissions=8&scope=bot">
+              <button class="bg-[#09A8CE] px-6 py-2 rounded-lg">Invite</button>
+            </a>
 
-    <img src="images/logo.png" class="w-1/2 mx-auto mt-10 rounded-2xl">
-  </div>
-</section>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-<!-- HELP MENU -->
-<section class="py-20 text-center">
-  <h2 class="text-4xl font-bold mb-2 text-[#09A8CE]">COMMANDS</h2>
-  <p class="text-white/70 mb-10">Vyber si kategóriu pomocou tlačidiel nižšie.</p>
+    <!-- HERO -->
+    <section id="hero" class="min-h-screen flex items-center justify-center text-center">
+      <div>
+        <h1 class="text-5xl font-bold">h-hi som Lumi!</h1>
+        <p class="mt-4 text-lg">꒰ Tvoj Discord kamarát v LittleSpace svete :3</p>
 
-  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="flex gap-4 justify-center mt-8 flex-wrap">
+          <a href="https://discord.com/oauth2/authorize?client_id=1445529198360924223&permissions=8&scope=bot">
+            <button class="bg-[#09A8CE] px-6 py-3 rounded-xl">Invite</button>
+          </a>
+          <button class="bg-white/10 px-6 py-3 rounded-xl">Donate</button>
+          <a href="#commands">
+            <button class="bg-white/10 px-6 py-3 rounded-xl">Commands</button>
+          </a>
+        </div>
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">🎲 Fun & Random</h3>
-      <p class="text-white/60 mt-2">Zábavné príkazy</p>
-    </div>
+        <img src="images/logo.png" class="mx-auto mt-10 w-40"/>
+      </div>
+    </section>
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">❤️ Interakcie</h3>
-      <p class="text-white/60 mt-2">Akcie medzi používateľmi</p>
-    </div>
+    <!-- COMMANDS -->
+    <section id="commands" class="py-20 text-center">
+      <h2 class="text-4xl mb-4">📜 LumiBot — Help Menu</h2>
+      <p class="mb-10">Vyber si kategóriu pomocou tlačidiel nižšie.</p>
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">🎮 Minihry</h3>
-      <p class="text-white/60 mt-2">Hry a výzvy</p>
-    </div>
+      <div class="space-y-6 text-left max-w-3xl mx-auto">
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">💸 Ekonomika</h3>
-      <p class="text-white/60 mt-2">Money & shop systém</p>
-    </div>
+        <div>
+          <h3>🎲 Fun & Random</h3>
+          <p>Zábavné príkazy</p>
+          <p>!roll !flip owo/uwu !fox !cat !dog !bbyfur !say !pp !gay !meme !decide !komix</p>
+        </div>
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">🎂 Narodeniny</h3>
-      <p class="text-white/60 mt-2">Birthday systém</p>
-    </div>
+        <div>
+          <h3>❤️ Interakcie</h3>
+          <p>!hug !cuddle !pat !snack</p>
+        </div>
 
-    <div class="bg-white/5 p-6 rounded-xl">
-      <h3 class="text-xl font-bold">⚙️ Nástroje</h3>
-      <p class="text-white/60 mt-2">Užitočné utility</p>
-    </div>
+        <div>
+          <h3>🎮 Minihry</h3>
+          <p>!counting !wordgame !kpn !pet → !check !feed !change !play !sleep</p>
+        </div>
 
-  </div>
-</section>
+        <div>
+          <h3>💸 Ekonomika</h3>
+          <p>!daily !bump !coins !shop !batoh</p>
+        </div>
 
-<!-- COMMANDS -->
-<section id="commands" class="py-20 px-6 max-w-5xl mx-auto">
-  <h2 class="text-4xl font-bold mb-10 text-center text-[#09A8CE]">Commands</h2>
+        <div>
+          <h3>🎂 Narodeniny</h3>
+          <p>!bday !listbday !setbdaychannel</p>
+        </div>
 
-  <div class="space-y-6 text-white/80">
+        <div>
+          <h3>⚙️ Nástroje</h3>
+          <p>!profile !info !stats !avatar !potty !voicecreate !confession !clean</p>
+        </div>
 
-<p>🎲 Fun & Random<br>
-!roll, !flip, owo/uwu, !fox, !cat, !dog, !bbyfur, !say, !pp, !gay, !meme, !decide, !komix</p>
+      </div>
+    </section>
 
-<p>❤️ Interakcie<br>
-!hug, !cuddle, !pat, !snack</p>
+    <!-- DISCORD -->
+    <section class="py-20 text-center">
+      <h2 class="text-3xl mb-6">Discord server</h2>
 
-<p>🎮 Minihry<br>
-!counting, !wordgame, !kpn, !pet (check, feed, change, play, sleep)</p>
+      <div class="bg-white/5 p-6 rounded-xl inline-block">
+        <p class="mb-2">Lumi komunita</p>
+        <p id="server-stats">Loading stats...</p>
 
-<p>💸 Ekonomika<br>
-!daily, !bump, !coins, !shop, !batoh</p>
+        <a href="https://discord.com/invite/tadqJjbfpr">
+          <button class="mt-4 bg-[#09A8CE] px-6 py-2 rounded-lg">Join</button>
+        </a>
+      </div>
+    </section>
 
-<p>🎂 Narodeniny<br>
-!bday, !listbday, !setbdaychannel</p>
+    <!-- FOOTER -->
+    <footer class="text-center py-10 text-white/50">
+      © 2025 LUMI BOT
+    </footer>
 
-<p>⚙️ Nástroje<br>
-!profile, !info, !stats, !avatar, !potty, !voicecreate, !confession, !clean</p>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="text-center py-10 text-white/50">
-  © 2026 LUMI BOT
-</footer>
-
-</body>
+  </body>
 </html>
